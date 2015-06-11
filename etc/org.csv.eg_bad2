@@ -1,0 +1,12 @@
+200,child a,100
+210,gchild aa,200
+220,gchild ab,200
+300,child b,100
+310,gchild ba,300
+380,ggchild baa,310
+381,ggchild baa,999
+400,child c,998
+410,child ca,400
+480,child caa,410
+220,repeat,100
+110,nil parent,
