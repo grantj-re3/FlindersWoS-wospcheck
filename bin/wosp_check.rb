@@ -5,9 +5,9 @@
 # See the accompanying LICENSE file (or http://opensource.org/licenses/BSD-3-Clause).
 #++ 
 #
-# Check Web of Science Profile "Organization" spreadsheet by
-# verifying organization IDs are decendants of the root ID.
-
+# Check Web of Science Profile Organization, Person and Person_Organization
+# spreadsheets. Eg. by verifying organization IDs are decendants of the root
+# organization ID.
 ##############################################################################
 # Add dirs to the library path
 $: << File.expand_path("../lib", File.dirname(__FILE__))
