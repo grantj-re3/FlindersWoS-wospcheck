@@ -1,0 +1,27 @@
+A description of the files in this directory is given below.
+
+  org.csv		- symbolic link to the Organization CSV worksheet (or one of the samples below)
+  org.ok1.csv		- Organization sample which is ok
+  org.poor1.csv		- Organization sample which generates errors/warnings
+  org.poor2.cs		- Organization sample which generates errors/warnings
+
+  person2org.csv	- symbolic link to the PersonOrganization worksheet CSV (or one of the samples below)
+  person2org.ok1.csv	- PersonOrganization sample which is ok
+  person2org.poor1.csv	- PersonOrganization sample which generates errors/warnings
+
+  person.csv		- symbolic link to the Person worksheet CSV (or one of the samples below)
+  person.ok1.csv	- Person sample which is ok
+  person.poor1.csv	- Person sample which generates errors/warnings
+
+
+The samples above are provided in order to evaluate the operation of the program.
+To do so, it is recommended that the files:
+ - org.csv
+ - person2org.csv
+ - person.csv
+
+are *all* symlinked to the "ok" samples, or if you are evaluating errors/warnings,
+then only one of those files should by symlinked to a "poor" sample at a time.
+This is because errors/warnings caused by one CSV file may affect the checking of
+another CSV file.
+

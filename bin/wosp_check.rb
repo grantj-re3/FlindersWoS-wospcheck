@@ -266,7 +266,7 @@ fname_persons = File.expand_path("../etc/person.csv", File.dirname(__FILE__))
 persons = Persons.new(fname_persons)
 #puts persons
 
-fname_person2ou = File.expand_path("../etc/person_org.csv", File.dirname(__FILE__))
+fname_person2ou = File.expand_path("../etc/person2org.csv", File.dirname(__FILE__))
 person2ou = Person2OrgUnit.new(fname_person2ou, org_units, persons)
 #puts person2ou
 
