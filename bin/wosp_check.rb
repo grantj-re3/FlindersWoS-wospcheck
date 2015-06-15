@@ -55,7 +55,6 @@ class OrgUnits
         @root_id = this_id
         STDERR.puts "INFO: ID #{this_id} -- Root record found on line #{count} -- #{line.inspect}"
       end
-      # FIXME: Detect loops
       STDERR.puts "ERROR: Line #{count} has nil ID. Must be a valid ID." if this_id.nil?
       STDERR.puts "ERROR: ID #{this_id} has nil parent ID on line #{count}. Must be a valid ID (or self-referencing for root)" if parent_id.nil?
       STDERR.puts "ERROR: ID #{this_id} is duplicated on line #{count} (earlier entry ignored)" if @parent_ids[this_id]
@@ -97,6 +96,7 @@ class OrgUnits
         @path[id] << "ok"
 
       else
+        # FIXME: Detect loops
         prev_id = nil
         next_id = id
         while true
