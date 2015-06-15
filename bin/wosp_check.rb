@@ -125,6 +125,7 @@ end
 # A class to represent WoS Persons
 ##############################################################################
 class Persons
+  attr_reader :descs
 
   ############################################################################
   def initialize(fname_csv)
@@ -189,6 +190,8 @@ class Person2OrgUnit
     @persons = persons		# A populated Persons object
 
     @person_org_pairs = []	# Array of person-ou ID pairs (each being a 2 element array)
+    @unique_person_ids = []		# A list of person IDs
+    @unique_org_ids = []		# A list of organization IDs
     load_csv(@fname_csv)
   end
 
@@ -218,11 +221,24 @@ class Person2OrgUnit
       STDERR.puts "WARNING: Line #{count} -- Person-ID #{person_id} -- org-ID '#{org_id}' contains leading or trailing white space" unless org_id.to_s == org_id.to_s.strip
       STDERR.puts "WARNING: Line #{count} -- person-ID & org-unit-ID pair are a duplicate. #{pair_str}" if @person_org_pairs.any?{|p| p.join(",") == pair_str}
       @person_org_pairs << pair
+      @unique_person_ids << person_id unless @unique_person_ids.include?(person_id)
+      @unique_org_ids << org_id unless @unique_org_ids.include?(org_id)
 
       # Verify references into other object lists
-      # FIXME: Verify that every person is mapped into an OrgUnit at least once
       STDERR.puts "WARNING: Line #{count} -- Org-ID '#{org_id}' does not exist in the Org-CSV" if org_id && !@org_units.has_key?(org_id)
       STDERR.puts "WARNING: Line #{count} -- Person-ID '#{person_id}' does not exist in the Person-CSV" if person_id && !@persons.has_key?(person_id)
+    }
+    verify_all_people_in_org
+  end
+
+  ############################################################################
+  def verify_all_people_in_org
+    puts "\n\nMethod: #{self.class}::#{__method__}"
+    # Assumes we've already verified that all Person2OrgUnit objects are
+    # linked to an ID within OrgUnits. Hence we only need to verify that
+    # each ID in Persons is linked to an OrgUnit at least once.
+    @persons.descs.sort.each{|pkey, desc|
+      STDERR.puts "WARNING: Person-ID #{pkey} not found in PersonOrganization CSV" unless @unique_person_ids.include?(pkey)
     }
   end
 
