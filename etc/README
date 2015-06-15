@@ -3,7 +3,7 @@ A description of the files in this directory is given below.
   org.csv		- symbolic link to the Organization CSV worksheet (or one of the samples below)
   org.ok1.csv		- Organization sample which is ok
   org.poor1.csv		- Organization sample which generates errors/warnings
-  org.poor2.cs		- Organization sample which generates errors/warnings
+  org.poor2.csv		- Organization sample which generates errors/warnings
 
   person2org.csv	- symbolic link to the PersonOrganization worksheet CSV (or one of the samples below)
   person2org.ok1.csv	- PersonOrganization sample which is ok
@@ -12,6 +12,9 @@ A description of the files in this directory is given below.
   person.csv		- symbolic link to the Person worksheet CSV (or one of the samples below)
   person.ok1.csv	- Person sample which is ok
   person.poor1.csv	- Person sample which generates errors/warnings
+
+
+NOTE: All CSV files have had their header line removed.
 
 
 The samples above are provided in order to evaluate the operation of the program.
